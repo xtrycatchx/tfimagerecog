@@ -24,8 +24,8 @@ export default class Recognition extends Component {
         this.state = {
             image: null,
             location: null,
-            result: null,
-            loading: false
+            name: null,
+            confidence: false
         }
     }
     render() {
@@ -35,7 +35,11 @@ export default class Recognition extends Component {
                     <Image style={{ width: width, height: width, resizeMode: 'contain' }} source={{ uri: `data:image/png;base64,${this.state.image}` }} />
                 }
                 <Text style={styles.results}>
-                    {this.state.result}
+                    {this.state.name}
+                </Text>
+
+                <Text style={styles.results}>
+                    {this.state.confidence}
                 </Text>
 
                 <View style={styles.buttonBottomViewContainer} >
@@ -46,13 +50,13 @@ export default class Recognition extends Component {
 
 
                         <TouchableHighlight
-                            style={{borderColor: '#000', borderWidth: .5, padding: 10, alignItems: 'center'}}
+                            style={{ borderColor: '#000', borderWidth: .5, padding: 10, alignItems: 'center' }}
                             activeOpacity={0.6}
                             underlayColor={'white'}
                             onPress={() => this.recognizeImage()} >
                             <Text style={styles.buttonBottomText}>RECOGNIZE</Text>
                         </TouchableHighlight>
-                }
+                    }
                 </View>
             </View>)
     }
@@ -86,8 +90,9 @@ export default class Recognition extends Component {
                 image: this.state.location //.substring(7)
             })
 
-            const resultText = `Name: ${results[0].name} - Confidence: ${results[0].confidence}`
-            this.setState({ result: resultText, loading: false })
+            const name = `Name: ${results[0].name}`
+            const confidence = `Confidence: ${results[0].confidence}`
+            this.setState({ name: name, confidence: confidence, loading: false })
 
             await tfImageRecognition.close()
         } catch (err) {
