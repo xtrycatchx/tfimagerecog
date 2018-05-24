@@ -46,11 +46,11 @@ export default class Recognition extends Component {
 
 
                         <TouchableHighlight
-                            style={styles.buttonBottom}
+                            style={{borderColor: '#000', borderWidth: .5, padding: 10, alignItems: 'center'}}
                             activeOpacity={0.6}
                             underlayColor={'white'}
                             onPress={() => this.recognizeImage()} >
-                            <Text style={styles.buttonBottomText}> RECOGNIZE </Text>
+                            <Text style={styles.buttonBottomText}>RECOGNIZE</Text>
                         </TouchableHighlight>
                 }
                 </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     results: {
         textAlign: 'center',
         color: '#333333',
-        marginBottom: 5,
+        marginTop: 20,
     },
     image: {
         width: 150,
@@ -121,11 +121,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 30
     },
-    buttonBottom: {
+    buttonBottomText: {
         fontWeight: '500',
         fontStyle: 'normal',
         textAlign: 'center',
-        color: '#6700ff'
+        color: '#000'
     }
 
 });
