@@ -46,11 +46,8 @@ export default class Recognition extends Component {
                     {this.state.loading
                         ? <ActivityIndicator size="large" color="#0000ff" />
                         :
-
-
-
                         <TouchableHighlight
-                            style={{ borderColor: '#000', borderWidth: .5, padding: 10, alignItems: 'center' }}
+                            style={styles.recognizeButton}
                             activeOpacity={0.6}
                             underlayColor={'white'}
                             onPress={() => this.recognizeImage()} >
@@ -83,11 +80,8 @@ export default class Recognition extends Component {
                 labels: require('./assets/tensorflow_labels.txt')
             })
 
-
-            //console.log("HERE:", this.state.location.substring(7))
-
             const results = await tfImageRecognition.recognize({
-                image: this.state.location //.substring(7)
+                image: this.state.location
             })
 
             const name = `Name: ${results[0].name}`
@@ -131,6 +125,12 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         textAlign: 'center',
         color: '#000'
+    },
+    recognizeButton: {
+        borderColor: '#000',
+        borderWidth: .5,
+        padding: 10,
+        alignItems: 'center'
     }
 
 });
