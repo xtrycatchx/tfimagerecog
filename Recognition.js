@@ -32,7 +32,7 @@ export default class Recognition extends Component {
         return (
             <View style={{ flex: 1, alignContent: 'center', alignItems: 'center', }}>
                 {this.state.image &&
-                    <Image style={{ width: width, height: width, resizeMode: 'contain' }} source={{ uri: `data:image/png;base64,${this.state.image}` }} />
+                    <Image style={{ width: width, height: width, margin: 10, resizeMode: 'contain' }} source={{ uri: `data:image/png;base64,${this.state.image}` }} />
                 }
                 <Text style={styles.results}>
                     {this.state.name}
@@ -60,7 +60,6 @@ export default class Recognition extends Component {
 
     componentWillMount() {
         const { params } = this.props.navigation.state;
-        console.log("RECEVIED", params)
         this.setState({
             image: params.base64,
             location: params.uri
