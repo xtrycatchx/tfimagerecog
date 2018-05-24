@@ -38,16 +38,22 @@ export default class Recognition extends Component {
                     {this.state.result}
                 </Text>
 
+                <View style={styles.buttonBottomViewContainer} >
+                    {this.state.loading
+                        ? <ActivityIndicator size="large" color="#0000ff" />
+                        :
 
-                {this.state.loading
-                    ? <ActivityIndicator size="large" color="#0000ff" />
-                    :
-                    <View style={{ alignContent: 'center', width: 250, padding: 20, alignItems: 'center', backgroundColor: 'grey' }}>
-                        <TouchableHighlight onPress={() => this.recognizeImage()}>
-                            <Text style={{ color: '#ffffff' }}>RECOGNIZE</Text>
+
+
+                        <TouchableHighlight
+                            style={styles.buttonBottom}
+                            activeOpacity={0.6}
+                            underlayColor={'white'}
+                            onPress={() => this.recognizeImage()} >
+                            <Text style={styles.buttonBottomText}> RECOGNIZE </Text>
                         </TouchableHighlight>
-                    </View>
                 }
+                </View>
             </View>)
     }
 
@@ -107,4 +113,19 @@ const styles = StyleSheet.create({
         width: 150,
         height: 100
     },
+    buttonBottomViewContainer: {
+        width: '100%',
+        height: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 30
+    },
+    buttonBottom: {
+        fontWeight: '500',
+        fontStyle: 'normal',
+        textAlign: 'center',
+        color: '#6700ff'
+    }
+
 });
