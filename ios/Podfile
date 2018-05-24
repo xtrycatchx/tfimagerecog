@@ -1,0 +1,2 @@
+target 'tfimagerecog'
+       pod 'TensorFlow-experimental'
