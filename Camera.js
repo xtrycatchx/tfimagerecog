@@ -10,7 +10,10 @@ import {
 
 import { RNCamera } from 'react-native-camera';
 
-export default class MyCamera extends Component {
+export default class Camera extends Component {
+    static navigationOptions = {
+        header: null,
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -41,7 +44,6 @@ export default class MyCamera extends Component {
         if (this.camera) {
             const options = { quality: 0.5, base64: true };
             const data = await this.camera.takePictureAsync(options)
-            console.log(JSON.stringify(data, null, 2));
             this.props.navigation.navigate('Recognition', { base64: data.base64, uri: data.uri })
         }
     };
